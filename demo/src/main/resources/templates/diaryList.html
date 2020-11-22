@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8" />
+    <title>일기 리스트</title>
+</head>
+<body>
+<h2>일기 목록</h2>
+<div th:unless="${#lists.isEmpty(diarys)}">
+    <dl th:each="diary : ${diarys}">
+        <dt>
+            <span th:if="${diary.title}" th:text="${diary.title}">Title</span>
+        </dt>
+        <dd>
+            <span th:if="${diary.content}" th:text="${diary.content}">Content</span>
+        </dd>
+    </dl>
+</div>
+
+<hr />
+
+<h3>일기 작성</h3>
+<form method="POST" th:action="@{/}">
+    <label for="title">Title:</label>
+    <input type="text" name="title" size="50" /><br />
+    <label for="content">Content:</label>
+    <input type="text" name="content" size="100" /><br />
+    <input type="submit" value="추가" />
+</form>
+</body>
+</html>

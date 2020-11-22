@@ -1,0 +1,5 @@
+---
+applications:
+  - name: demo-app
+    instance: 1
+    memory: 1G
